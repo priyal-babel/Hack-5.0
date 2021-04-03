@@ -25,4 +25,4 @@ class EventManager(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key = True)
     
     def __str__(self):
-        return self.name
+        return self.user.username

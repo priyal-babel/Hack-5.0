@@ -15,13 +15,12 @@ class NgoSignUpForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ('username','email', 'NGO_name', 'manager_name', 'phone_number', 'address', 'city', 'state', 'zipcode', 'password1', 'password2')
 
     @transaction.atomic
     def save(self):
         user = super().save(commit=False)
         user.is_ngo = True
-        user.name = self.cleaned_data.get('name')
+        user.name = self.cleaned_data.get('NGO_name')
         user.manager_name = self.cleaned_data.get('manager_name')
         user.phone_number = self.cleaned_data.get('phone_number')
         user.email = self.cleaned_data.get('email')

@@ -23,7 +23,7 @@ class EventManagerSignUpForm(UserCreationForm):
     def save(self):
         user = super().save(commit=False)
         user.is_eventManager = True
-        user.name = self.cleaned_data.get('name')
+        user.name = self.cleaned_data.get('Organization_name')
         user.manager_name = self.cleaned_data.get('manager_name')
         user.phone_number = self.cleaned_data.get('phone_number')
         user.email = self.cleaned_data.get('email')
