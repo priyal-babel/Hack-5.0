@@ -4,6 +4,7 @@ from .forms import NgoSignUpForm
 from django.contrib import messages
 
 # Create your views here.
+
 def home(request):
     return render(request, 'ngo/home.html')
 
