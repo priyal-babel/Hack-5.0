@@ -5,7 +5,7 @@ from django.urls import reverse
 # Create your models here.
 
 class PostEvent(models.Model):
-    product_id = models.AutoField
+    event_id = models.AutoField
     event_organiser = models.ForeignKey(EventManager, on_delete=models.CASCADE)
     event_name = models.CharField(max_length=100)
     event_manager = models.CharField(max_length=100)
@@ -24,4 +24,4 @@ class PostEvent(models.Model):
         return self.event_name
 
     def get_absolute_url(self):
-        return reverse('',kwargs={'id':self.id})
+        return reverse('event-home')

@@ -37,3 +37,6 @@ def ngo_login(request):
                 messages.error(request,"Invalid username or password")
     return render(request, 'ngo/login.html',
     context={'form':AuthenticationForm()})
+
+def eventlist(request):
+    return render(request, 'ngo/eventList.html')
