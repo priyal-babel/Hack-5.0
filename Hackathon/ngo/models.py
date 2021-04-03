@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, User
+from PIL import Image
+
 # Create your models here.
 
 
@@ -23,6 +25,16 @@ class Ngo(models.Model):
 
 class EventManager(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key = True)
+    organisation_picture = models.ImageField(default='default.jpg', upload_to='organisation_pics',null=True, blank=True)
+
     
     def __str__(self):
         return self.user.username
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = Image.open(self.organisation_picture.path)
+        if img.height > 250 or img.width > 250:
+            output_size=(250,250)
+            img.thumbnail(output_size)
+            img.save(self.organisation_picture.path)

@@ -1,5 +1,4 @@
 {% extends "ngo/base.html" %}
-
 {% block style %}
     .title{
   font-size: 25px;
@@ -39,17 +38,93 @@
     text-decoration: none;
 }
 
-{% endblock style %}
+.card{
+  width: 50rem !important;
+}
 
+.div1{
+  width: 50%;
+  /* background-color: ghostwhite; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.div2{
+  width: 50%;
+  /* background-color: grey; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row1{
+  /* background-color: blue; */
+}
+
+.image_class{
+  /* background-color: black; */
+}
+
+.myimg{
+  height: 250px;
+  width: 250px;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
+}
+
+@media(max-width: 1000px) {
+  .card{
+    width: 40rem !important;
+  }
+}
+
+@media(max-width: 770px) {
+  .card{
+    width: 30rem !important;
+  }
+    .div1{
+    width: 100%;
+  }
+
+   .div2{
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+
+@media(max-width: 530px) {
+  .card{
+    width: 25rem !important;
+  }
+}
+
+
+
+@media(max-width: 460px) {
+  .card{
+    width: 20rem !important;
+  }
+}
+
+@media(max-width: 350px) {
+  .card{
+    width: 15rem !important;
+  }
+}
+
+{% endblock style %}
 {% block body %}
     <div class="container">
       <div class="row mt-3">
         <div class="col-11 mx-auto">
           <div class="row mx-auto">
             <div class="col-8-lg col-10-md col-12-sm mx-auto">
-                <div class="card">
+                <div class="card animate flipInX">
                   <div class="card-body mycard shadow-lg">
                     <h5 class="card-title text-center title">Marraige</h5><hr>
+                    <div class="row row1">
+                      <div class="div1">
                       <p class="card-text">
                         <span>Event Organizer : </span> Harshit Jain
                       </p>
@@ -62,6 +137,14 @@
                       <p class="card-text">
                         <span>Food Quantity : <i class="fas fa-balance-scale-right"></i></span> 5kgs
                       </p>
+                        <p class="card-text">
+                        <span>Status : </span>    Available
+                      </p>
+                      </div>
+                      <div class="div2 image_class">
+                        <img src="https://img.etimg.com/thumb/width-1200,height-900,imgsize-786987,resizemode-1,msid-81535565/prime/consumer/digitising-the-traditional-indian-wedding-market-why-wedmegood-is-up-against-a-herculean-task.jpg" class="myimg img-fluid " alt="image">
+                        </div>
+                      </div>
                 <!-- <a href="#" class="mybtn mt-5 text-center"> Details </a> -->
                 <button href="#" class="mybtn mt-3 text-center"> Details </button>
                       </div>
@@ -70,13 +153,15 @@
           </div>
         </div>
     </div>
-          <div class="row mt-3">
+       <div class="row mt-3">
         <div class="col-11 mx-auto">
           <div class="row mx-auto">
             <div class="col-8-lg col-10-md col-12-sm mx-auto">
-                <div class="card">
+                <div class="card animate flipInX">
                   <div class="card-body mycard shadow-lg">
                     <h5 class="card-title text-center title">Marraige</h5><hr>
+                    <div class="row row1">
+                      <div class="div1">
                       <p class="card-text">
                         <span>Event Organizer : </span> Harshit Jain
                       </p>
@@ -89,6 +174,14 @@
                       <p class="card-text">
                         <span>Food Quantity : <i class="fas fa-balance-scale-right"></i></span> 5kgs
                       </p>
+                        <p class="card-text">
+                        <span>Status : </span>    Available
+                      </p>
+                      </div>
+                      <div class="div2 image_class">
+                        <img src="https://img.etimg.com/thumb/width-1200,height-900,imgsize-786987,resizemode-1,msid-81535565/prime/consumer/digitising-the-traditional-indian-wedding-market-why-wedmegood-is-up-against-a-herculean-task.jpg" class="myimg img-fluid " alt="image">
+                        </div>
+                      </div>
                 <!-- <a href="#" class="mybtn mt-5 text-center"> Details </a> -->
                 <button href="#" class="mybtn mt-3 text-center"> Details </button>
                       </div>
@@ -98,4 +191,5 @@
         </div>
     </div>
     </div>
+
     {% endblock body %}

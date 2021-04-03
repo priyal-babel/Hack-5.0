@@ -1,9 +1,11 @@
+from .models import Ngo
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import NgoSignUpForm
+from .forms import NgoSignUpForm, UserUpdateForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -40,3 +42,24 @@ def ngo_login(request):
 
 def eventlist(request):
     return render(request, 'ngo/eventList.html')
+
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, request.FILES, instance=request.user)
+        
+        if u_form.is_valid():
+            u_form.save()
+            messages.success(request, f'Your account has been updated!')
+            return redirect('ngo-profile')
+
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        ob = Ngo.objects.filter(user= request.user)
+    context = {
+        'u_form': u_form,
+        'event': ob[0]
+    }
+
+    return render(request, 'ngo/profile.html', context)

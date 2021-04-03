@@ -12,6 +12,7 @@ class NgoSignUpForm(UserCreationForm):
     state = forms.CharField(required=True) 
     city = forms.CharField(required=True)
     zipcode = forms.CharField(required=True)
+    
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -32,3 +33,18 @@ class NgoSignUpForm(UserCreationForm):
         ngo = Ngo.objects.create(user=user)
         ngo.save()
         return user
+
+
+class UserUpdateForm(forms.ModelForm):
+    name = forms.CharField()
+    manager_name = forms.CharField()
+    phone_number = forms.CharField()
+    email = forms.EmailField()
+    address = forms.CharField()
+    city = forms.CharField()
+    state = forms.CharField()
+    zipcode = forms.CharField()
+
+    class Meta:
+        model = Ngo
+        fields = ['name', 'email', 'manager_name','phone_number','address','zipcode','state','city']

@@ -129,3 +129,5 @@ MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL='ngo-home'
 LOGIN_URL = 'ngo-login'
+
+LOGOUT_REDIRECT_URL = 'ngo-home'

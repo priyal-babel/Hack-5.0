@@ -35,6 +35,49 @@
 .padding-c{
     padding-top: 100px;
 }
+.img-height{
+  height: 250px;
+}
+
+.logo{
+  animation: slide 1s alternate infinite ease-in-out;
+  -webkit-filter: drop-shadow(3px 3px 3px #222);
+  filter: drop-shadow(3px 3px 3px #222);
+}
+
+@keyframes slide{
+  from{
+    transform : translateY(5px);
+  }
+  to{
+    transform : translateY(-5px);
+  }
+}
+
+.bio{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lead{
+  font-style: italic;
+  font-weight: 400;
+}
+
+.lead span{
+  font-size: 30px;
+  margin-right: 7px;
+}
+
+#abc{
+  font-size: 30px;
+  margin-left: 7px;
+}
+.para{
+  font-size: 19.5px;
+}
 
 {% endblock style %}
 
@@ -42,11 +85,12 @@
 
           <div class="container padding-c">
             <div class="jumbotron">
-          <h1 class="display-4">DaanData</h1>
-          <p class="lead">One place for all your services,platform for small business.</p>
+              <div class="bio">
+                <img src="/media/images/logo.png" class="logo" alt="Logo">
+                <p class="lead"><span><i class="fas fa-quote-left"></i></span>Hunger is something no one should struggle with- or be judged for.<span id="abc"><i class="fas fa-quote-right"></i></span></p>
+                <p class="para">There is a surplus amount of food and every day billions of tonnes of food get wasted but still, there are millions of people across the world who are dying of hunger. We, at DaanData aim to ensure that there should be equal distribution of food among all human beings and that each person is entitled to their fair share of food. We do so by connecting nearby Event Organisers to NGOs so that they can donate the surplus amount of food to the needy people.</p>
+            </div>
           <hr class="my-4">
-
-  
         </div>
           </div>
         
@@ -55,12 +99,12 @@
           <div class="container">
       
             <div class="row">
-              <div class="col-lg-3">
+              <div class="col-lg-3 d-flex align-items-stretch">
                 <div class="card shadow-sm"> 
-                    <img src="/media/images/sushi.jpg" class="card-img-top" alt="..." style="max-height:500px;">     
+                    <img src="/media/images/sushi.jpg" class="card-img-top img-height" alt="..." style="max-height:300px;">     
                   <div class="card-body">
                     <h5 class="card-title">Sashank MVV</h5><hr>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text">Second Year Computer Engineering student from K. J. Somaiya College Of Engineering.</p>
                     <div class="row">
                         <div class="col">
                             <a href="https://wa.me/918169974101?text=Hey!%20I%20would%20like%20to%20connect%20with%20you%20regarding%20your%20website" class="fa fa-whatsapp"></a>
@@ -75,12 +119,12 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3">
+              <div class="col-lg-3 d-flex align-items-stretch">
                 <div class="card shadow-sm">  
-                    <img src="/media/images/harshit.jpg" class="card-img-top" alt="..." style="max-height:500px;">         
+                    <img src="/media/images/harshit.jpg" class="card-img-top img-height" alt="..." style="max-height:300px;">         
                   <div class="card-body">
                     <h5 class="card-title">Harshit Jain</h5><hr>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text">Second Year Computer Engineering student from K. J. Somaiya College Of Engineering.</p>
                       <div class="row">
                         <div class="col">
                             <a href="https://wa.me/919730813585?text=Hey!%20I%20would%20like%20to%20connect%20with%20you%20regarding%20your%20website" class="fa fa-whatsapp"></a>
@@ -95,12 +139,12 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3">
+              <div class="col-lg-3 d-flex align-items-stretch">
                 <div class="card shadow-sm">    
-                    <img src="/media/images/priyal.jpg" class="card-img-top" alt="..." style="max-height:500px;">       
+                    <img src="/media/images/priyal.jpg" class="card-img-top img-height" alt="..." style="max-height:300px;">       
                   <div class="card-body">
                     <h5 class="card-title">Priyal Babel</h5><hr>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text">Second Year Computer Engineering student from K. J. Somaiya College Of Engineering.</p>
                     <div class="row">
                         <div class="col">
                             <a href="https://wa.me/918976514635?text=Hey!%20I%20would%20like%20to%20connect%20with%20you%20regarding%20your%20website" class="fa fa-whatsapp"></a>
@@ -115,12 +159,12 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3">
+              <div class="col-lg-3 d-flex align-items-stretch">
                 <div class="card shadow-sm">
-                    <img src="/media/images/devly.jpg" class="card-img-top" alt="..." style="max-height:500px;">     
+                    <img src="/media/images/devansh.jpeg" class="card-img-top img-height" alt="..." style="max-height:300px;">     
                   <div class="card-body">
                     <h5 class="card-title">Devansh Shah</h5><hr>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text">Second Year Computer Engineering student from K. J. Somaiya College Of Engineering.</p>
                     <div class="row">
                         <div class="col">
                             <a href="https://wa.me/918767036024?text=Hey!%20I%20would%20like%20to%20connect%20with%20you%20regarding%20your%20website" class="fa fa-whatsapp"></a>

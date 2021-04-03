@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, request
-from .forms import EventManagerSignUpForm
+from .forms import EventManagerSignUpForm, UserUpdateForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import CreateView
 from .models import PostEvent
@@ -34,7 +35,6 @@ def organizer_register(request):
         form = EventManagerSignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Your account has been created! You are now able to log in')
             return redirect('event-home')
     else:
         form = EventManagerSignUpForm()
@@ -49,10 +49,34 @@ def organizer_login(request):
             user = authenticate(username=username, password=password)
             if user is not None :
                 login(request,user)
-                return redirect('event-home')
+                return redirect('event-profile')
             else:
                 messages.error(request,"Invalid username or password")
         else:
                 messages.error(request,"Invalid username or password")
     return render(request, 'eventManager/login.html',
     context={'form':AuthenticationForm()})
+
+
+# def profile(request):
+#     user_posts = PostEvent.objects.filter(event_organiser = request.user.id)
+#     return render(request, 'eventManager/profile.html', {'posts': user_posts})
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, request.FILES, instance=request.user)
+        
+        if u_form.is_valid():
+            u_form.save()
+            return redirect('event-profile')
+
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        ob = EventManager.objects.filter(user= request.user)
+    context = {
+        'u_form': u_form,
+        'event': ob[0]
+    }
+
+    return render(request, 'eventManager/profile.html', context)

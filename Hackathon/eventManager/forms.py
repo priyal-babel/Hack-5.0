@@ -12,11 +12,11 @@ class EventManagerSignUpForm(UserCreationForm):
     zipcode = forms.CharField(required=True)   
     state = forms.CharField(required=True) 
     city = forms.CharField(required=True)
+    organisation_picture = forms.ImageField(required=False)
     
 
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ('username','email', 'Organization_name', 'manager_name', 'phone_number', 'address', 'city', 'state', 'zipcode', 'password1', 'password2')
 
 
     @transaction.atomic
@@ -33,5 +33,22 @@ class EventManagerSignUpForm(UserCreationForm):
         user.city = self.cleaned_data.get('city')
         user.save()
         event_manager = EventManager.objects.create(user=user)
+        EventManager.organisation_picture = self.cleaned_data.get('Organisation_picture')        
         event_manager.save()
         return user
+
+
+class UserUpdateForm(forms.ModelForm):
+    name = forms.CharField()
+    manager_name = forms.CharField()
+    phone_number = forms.CharField()
+    email = forms.EmailField()
+    address = forms.CharField()
+    zipcode = forms.CharField()   
+    state = forms.CharField() 
+    city = forms.CharField()
+    organisation_picture = forms.ImageField()
+
+    class Meta:
+        model = EventManager
+        fields = ['name', 'manager_name','email','phone_number','address','state','city', 'zipcode' ,'organisation_picture']
