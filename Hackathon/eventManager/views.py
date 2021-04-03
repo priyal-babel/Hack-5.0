@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, request
-from .forms import EventManagerSignUpForm, UserUpdateForm
+from .forms import EventManagerSignUpForm, UserUpdateForm, EventUpdateForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
@@ -24,7 +24,9 @@ class PostCreateView(LoginRequiredMixin, CreateView):
             return redirect('event-login')
 
 
-
+def myPost(request):
+    events = PostEvent.objects.filter(event_organiser = request.user.id)
+    return render(request, 'eventManager/myPost.html', {'events':events})
 
 # Create your views here.
 def home(request):
@@ -75,8 +77,34 @@ def profile(request):
         u_form = UserUpdateForm(instance=request.user)
         ob = EventManager.objects.filter(user= request.user)
     context = {
-        'u_form': u_form,
+        'form': u_form,
         'event': ob[0]
     }
 
     return render(request, 'eventManager/profile.html', context)
+
+
+# @login_required
+# def event_update(request):
+#     if request.method == 'POST':
+#         form = EventUpdateForm(request.POST, instance=request.user)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('event-myevents')
+
+#     else:
+#         form = EventUpdateForm(instance=request.user)
+#     context = {
+#         'form': form
+#     }
+
+#     return render(request, 'eventManager/myPost.html', context)
+
+@login_required
+def event_update(request, pk): 
+    instance = get_object_or_404(PostEvent, id=pk)
+    form = EventUpdateForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        form.save()
+        return redirect('event-myevents')
+    return render(request, 'eventManager/updateEvent.html', {'form': form})

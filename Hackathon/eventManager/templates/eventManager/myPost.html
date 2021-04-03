@@ -55,23 +55,10 @@ width: 50%;
 /* background-color: grey; */
 display: flex;
 align-items: center;
-justify-content: center;
+flex-direction: column;
 }
 
-.row1{
-/* background-color: blue; */
-}
 
-.image_class{
-/* background-color: black; */
-}
-
-.myimg{
-height: 250px;
-width: 250px;
--webkit-filter: drop-shadow(5px 5px 5px #222);
-filter: drop-shadow(5px 5px 5px #222);
-}
 
 @media(max-width: 1000px) {
 .card{
@@ -112,11 +99,10 @@ width: 20rem !important;
 width: 15rem !important;
 }
 }
-
 {% endblock style %}
 {% block body %}
 <div class="container">
-{% for event in events %}
+  {% for event in events %}
   <div class="row mt-3">
     <div class="col-11 mx-auto">
       <div class="row mx-auto">
@@ -131,31 +117,45 @@ width: 15rem !important;
                     <span>Event Organizer : </span> {{ event.event_organiser }}
                   </p>
                   <p class="card-text">
+                    <span>Event Name : </span> {{ event.event_name }}
+                  </p>
+                  <p class="card-text">
+                    <span>Event Manager : </span> {{ event.event_manager }}
+                  </p>
+                  <p class="card-text">
                     <span>Contact : <i class="fas fa-phone"></i></span> {{ event.event_contact }}
+                  </p>
+
+                  <p class="card-text">
+                    <span>Food Quantity : <i class="fas fa-balance-scale-right"></i></span> {{ event.event_foodqty }} Kg
+                  </p>
+                </div>
+                <div class="div2">
+                  <p class="card-text">
+                    <span>Address : <i class="fas fa-map-marker-alt"></i></span> {{ event.event_address }}
                   </p>
                   <p class="card-text">
                     <span>Location : <i class="fas fa-map-marker-alt"></i></span> {{ event.event_location }}
                   </p>
                   <p class="card-text">
-                    <span>Food Quantity : <i class="fas fa-balance-scale-right"></i></span> {{ event.event_foodqty }} Kg
+                    <span>City : </span> {{ event.event_city }}
                   </p>
                   <p class="card-text">
-                  {% if  event.event_status  %}
+                    <span>State : </span> {{ event.event_state }}
+                  </p>
+                  <p class="card-text">
+                    <span>Zip-Code : </span> {{ event.event_zipcode }}
+                  </p>
+                  <p class="card-text">
+                     {% if  event.event_status  %}
                       <span>Status : </span> Available
                   {% else %}
                       <span>Status : </span> Not Available
                   {% endif %}
-                    
                   </p>
                 </div>
-                <div class="div2 image_class">
-                  <img
-                    src="{{ event.event_organiser.organisation_picture.url }}"
-                    class="myimg img-fluid " alt="image">
-                </div>
               </div>
-              <!-- <a href="#" class="mybtn mt-5 text-center"> Details </a> -->
-              <a href="{% url 'event-detail' event.id %}" class="mybtn mt-3 text-center"> Details </a>
+              <a href="{% url 'event-update' event.id %}" class="mybtn mt-3 text-center"> Update </a>
             </div>
           </div>
         </div>

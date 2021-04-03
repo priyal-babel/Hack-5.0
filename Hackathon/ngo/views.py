@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from eventManager.models import PostEvent
 
 # Create your views here.
 
@@ -41,8 +42,12 @@ def ngo_login(request):
     context={'form':AuthenticationForm()})
 
 def eventlist(request):
-    return render(request, 'ngo/eventList.html')
+    event = PostEvent.objects.all()
+    return render(request, 'ngo/eventList.html', {'events':event})
 
+def eventDetail(request, pk):
+    obj = PostEvent.objects.filter(id=pk)
+    return render(request, 'ngo/eventDetail.html', {'event':obj[0]})
 
 @login_required
 def profile(request):
@@ -58,7 +63,7 @@ def profile(request):
         u_form = UserUpdateForm(instance=request.user)
         ob = Ngo.objects.filter(user= request.user)
     context = {
-        'u_form': u_form,
+        'form': u_form,
         'event': ob[0]
     }
 
