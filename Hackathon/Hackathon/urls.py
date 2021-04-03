@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ngo/', include('ngo.urls')),
+    path('eventManager/', include('eventManager.urls')),
 ]
