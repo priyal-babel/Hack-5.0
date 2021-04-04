@@ -33,8 +33,7 @@ class EventManagerSignUpForm(UserCreationForm):
         user.city = self.cleaned_data.get('city')
         user.save()
         event_manager = EventManager.objects.create(user=user)
-        EventManager.organisation_picture = self.cleaned_data.get(
-            'Organisation_picture')
+        EventManager.organisation_picture = self.cleaned_data.get('Organisation_picture')
         event_manager.save()
         return user
 
@@ -48,7 +47,7 @@ class UserUpdateForm(forms.ModelForm):
     zipcode = forms.CharField()
     state = forms.CharField()
     city = forms.CharField()
-    organisation_picture = forms.ImageField()
+    organisation_picture = forms.ImageField(required=False)
 
     class Meta:
         model = EventManager

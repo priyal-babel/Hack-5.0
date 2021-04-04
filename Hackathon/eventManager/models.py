@@ -18,6 +18,8 @@ class PostEvent(models.Model):
     event_foodqty = models.PositiveIntegerField(default=0)
     event_type = models.CharField(max_length=100, default='')
     event_status = models.BooleanField(default=False)
+    event_lat = models.CharField(max_length=100, default='')
+    event_lon = models.CharField(max_length=100, default='')
 
 
     def __str__(self):

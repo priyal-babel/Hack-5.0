@@ -30,6 +30,9 @@ h4{
     font-size: 30px;
     border-radius: 10px;
 }
+#mymap{
+  height: 500px;
+}
 {% endblock style %}
 
 {% block body %}
@@ -55,4 +58,20 @@ h4{
   </div>
     
 </div>
+<div id="mymap"></div>
 {% endblock body %}
+
+{% block script %}
+<script>
+var mymap = L.map('mymap').setView([51.505, -0.09], 3);
+
+ const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright%22%3EOpenStreetMap</a> contributors"
+
+ const layer = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+
+ const tiles = L.tileLayer(layer,{attribution});
+ tiles.addTo(mymap);
+
+ var marker = L.marker([{{event.event_lat}}, {{event.event_lon}}]).addTo(mymap);
+</script>
+{% endblock script %}

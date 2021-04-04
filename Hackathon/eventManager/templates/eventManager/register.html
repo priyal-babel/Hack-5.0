@@ -10,7 +10,7 @@
 {% block body %}
 <div class="container">
      <div class="jumbotron" style="background-color: rgb(233, 233, 233);" >
-        <form method='POST'>
+        <form method='POST' class="post-form" enctype="multipart/form-data" >
             {% csrf_token %}
             <h2 className="contact_h2 text-center">Event Organizer Registration</h2>
                 <div class="form-row">
