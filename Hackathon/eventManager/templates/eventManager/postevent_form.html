@@ -1,12 +1,12 @@
 {% extends "ngo/base.html" %}
 {% load crispy_forms_tags %}
 {% block body %}
-<body style="background-color: rgb(10, 60, 66);">
-  <div class="container ">
+<body style="background-color: rgb(255, 255, 255);">
+  <div class="container mt-4">
         <form method='POST'>
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">New Post</legend>
+                <legend class="border-bottom mb-4">New Event</legend>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">

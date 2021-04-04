@@ -127,7 +127,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-LOGIN_REDIRECT_URL='ngo-home'
+LOGIN_REDIRECT_URL='event-list'
 LOGIN_URL = 'ngo-login'
 
-LOGOUT_REDIRECT_URL = 'ngo-home'
+LOGOUT_REDIRECT_URL = 'home'

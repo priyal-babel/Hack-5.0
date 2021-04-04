@@ -60,10 +60,6 @@ def organizer_login(request):
     context={'form':AuthenticationForm()})
 
 
-# def profile(request):
-#     user_posts = PostEvent.objects.filter(event_organiser = request.user.id)
-#     return render(request, 'eventManager/profile.html', {'posts': user_posts})
-
 @login_required
 def profile(request):
     if request.method == 'POST':
@@ -83,22 +79,6 @@ def profile(request):
 
     return render(request, 'eventManager/profile.html', context)
 
-
-# @login_required
-# def event_update(request):
-#     if request.method == 'POST':
-#         form = EventUpdateForm(request.POST, instance=request.user)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('event-myevents')
-
-#     else:
-#         form = EventUpdateForm(instance=request.user)
-#     context = {
-#         'form': form
-#     }
-
-#     return render(request, 'eventManager/myPost.html', context)
 
 @login_required
 def event_update(request, pk): 

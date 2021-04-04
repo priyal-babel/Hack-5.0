@@ -29,7 +29,24 @@
         width: 100%;
         z-index: 100;
     }
-    
+    .footer{
+      width: 100%;
+      background-color: black;
+      color: white;
+      text-align: center;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 2;
+    }
+    .foot_head{
+      font-style: italic;
+      font-weight: 400;
+      font-size: 10px;
+     }
+     body{
+       overflow-x:hidden;
+     }
      {% block style %} {% endblock style %}
 
     </style>
@@ -49,7 +66,7 @@
     <!--Navbar-->
     <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#" style="font-style: italic;">DaanData</a>
+  <a class="navbar-brand" href="{% url 'home' %}" style="font-style: italic;">DaanData</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -57,18 +74,27 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'ngo-home' %}">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
       </li>
+      {% if user.is_authenticated%}
+        {% if user.is_ngo %}
+        <a class="nav-item nav-link" href="{% url 'event-list'  %}">Event List</a>
+        {% else %}
+        <a class="nav-item nav-link" href="{% url 'new-event'  %}">Create Event</a>
+        <a class="nav-item nav-link" href="{% url 'event-myevents'  %}">My Events</a>
+        {% endif %}
+      </li>
+        {% endif %}
     </ul>
     {% if user.is_authenticated%}
         {% if user.is_ngo%}
-        <a class="nav-item nav-link" href="{% url 'contact'  %}">Profile</a>
+        <a class="nav-item nav-link" href="{% url 'ngo-profile'  %}">Profile</a>
         <a class="nav-item nav-link" href="{% url 'ngo-logout'  %}">Logout</a>
         {% else %}
-        <a class="nav-item nav-link" href="{% url 'contact'  %}">Profile</a>
+        <a class="nav-item nav-link" href="{% url 'event-profile'  %}">Profile</a>
         <a class="nav-item nav-link" href="{% url 'event-logout'  %}">Logout</a>
         {% endif %}
       </li>
@@ -92,4 +118,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js%22%3E"></script>
   </body>
+  <footer> 
+  <div class="footer">
+    <h4 class="foot_head">Copyrights © 2021. All Rights Reserved</h4>
+  </div>
+</footer>
 </html> 

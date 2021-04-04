@@ -4,7 +4,6 @@ from . import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('', views.home, name='ngo-home'), 
     path('register', views.ngo_register, name='ngo-register'), 
     path('login', views.ngo_login, name='ngo-login'), 
     path('profile/', views.profile, name='ngo-profile'),

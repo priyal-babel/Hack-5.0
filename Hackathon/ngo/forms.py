@@ -4,7 +4,7 @@ from django.db import transaction
 from .models import User, Ngo
 
 class NgoSignUpForm(UserCreationForm):
-    NGO_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'NurturingLives'}))
+    NGO_name = forms.CharField(required=True)
     manager_name = forms.CharField(required=True)
     phone_number = forms.CharField(required=True)
     email = forms.EmailField(required=True)

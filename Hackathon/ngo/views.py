@@ -10,8 +10,6 @@ from eventManager.models import PostEvent
 
 # Create your views here.
 
-def home(request):
-    return render(request, 'ngo/home.html')
 
 def ngo_register(request):
     if request.method == 'POST':
@@ -19,7 +17,7 @@ def ngo_register(request):
         if form.is_valid():
             form.save()
             messages.success(request, f'Your account has been created! You are now able to log in')
-            return redirect('ngo-home')
+            return redirect('home')
     else:
         form = NgoSignUpForm()
     return render(request, 'ngo/register.html', {'form': form})
@@ -33,7 +31,7 @@ def ngo_login(request):
             user = authenticate(username=username, password=password)
             if user is not None :
                 login(request,user)
-                return redirect('ngo-home')
+                return redirect('home')
             else:
                 messages.error(request,"Invalid username or password")
         else:
